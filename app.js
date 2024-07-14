@@ -31,6 +31,13 @@ app.get('/books/:id', (req, res)=>{
     res.send(createBookTemplate(book));
 })
 
+app.delete('/books/:id',(req, res)=>{
+    const id = req.params.id;
+    const index = books_data.findIndex((b)=>b.id===id);
+    books_data.splice(index,1);
+    res.send();
+})
+
 app.listen(3000, ()=>{
     console.log('Server listening on port 3000');
 });
